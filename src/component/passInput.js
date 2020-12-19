@@ -25,7 +25,7 @@ const StdInput = styled.div`
         content: 'Password';
         position: absolute;
         display: ${props=>props.selected?'block':'none'};
-        font-size: 8px;
+        font-size: 10px;
         top: -13px;
         left: 40px;
         width: 60px;
@@ -50,6 +50,7 @@ const Forgot =styled.button`
     font-size:16px;
     top:8px;
     right:40px;
+    cursor:pointer;
     &:focus{
         outline:none;
     }

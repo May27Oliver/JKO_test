@@ -12,6 +12,7 @@ const File = styled.div`
     border-radius:10px;
     margin:10px;
     position:relative;
+    cursor:pointer;
     @media (min-width: 400px) {
         width:167px;
         flex:0 0 167px;

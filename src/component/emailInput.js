@@ -28,7 +28,7 @@ const StdInput = styled.div`
         content: 'E-mail';
         position: absolute;
         display: ${props=>props.selected?'block':'none'};
-        font-size: 8px;
+        font-size: 10px;
         top: -13px;
         left: 40px;
         width: 50px;

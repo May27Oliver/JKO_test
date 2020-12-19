@@ -30,6 +30,7 @@ const SignUp = styled.span`
     font-weight:400;
     curosr:pointer;
     line-height:40px;
+    cursor:pointer;
 `
 const LoginBtn = styled.button`
     flex:0 0 100px;
@@ -37,7 +38,9 @@ const LoginBtn = styled.button`
     border:none;
     color:#fff;
     border-radius:5px;
+    font-size: 16px;
     background:#41B8EE;
+    cursor:pointer;
     &:active {
         background:#369fcf;
     }
@@ -59,6 +62,19 @@ const AlertMsg = styled.div`
     border-radius:5px;
     background:#3ca6d6;
     color:#fff;
+    @media (min-width: 500px) {
+        width:425px;
+    }
+`
+
+const MessageBox = styled.div`
+    display:${props=>props.showMsg?'block':'none'};
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:transparent;
 `
 
 class btnPanel extends Component {
@@ -66,17 +82,16 @@ class btnPanel extends Component {
         super()
         this.state={
             showMsg:false,
-            altMsg:''
+            altMsg:'',
+            type:''
         }
     }
     cleanMsg=()=>{
-        let clock = setInterval(()=>{
-            this.setState({
-                showMsg:false,
-                altMsg:''
-            })
-            clearTimeout(clock);
-        },5000);
+        this.setState({
+            showMsg:false,
+            altMsg:'',
+            type:''
+        })
     }
     LoginCheck=()=>{
         let acc = document.getElementById('input_acc').value;
@@ -87,28 +102,28 @@ class btnPanel extends Component {
                 if(reg.test(acc)){
                         this.setState({
                             showMsg:true,
-                            altMsg:'密碼的任意連續 6 碼，不可以和帳號的任意連續 6 碼重複！'
+                            altMsg:'密碼的任意連續 6 碼，不可以和帳號的任意連續 6 碼重複！',
+                            type:'warn'
                         })
-                        this.cleanMsg();
                         break;
                 }else{
                     this.setState({
                         showMsg:true,
-                        altMsg:'您已通過檢驗！'
+                        altMsg:'您已通過檢驗！',
+                        type:'success'
                     })
-                    this.cleanMsg();
                 };
             }else{
                 this.setState({
                     showMsg:true,
-                    altMsg:'您已通過檢驗！'
+                    altMsg:'您已通過檢驗！',
+                    type:'success'
                 })
-                this.cleanMsg();
             }
         }
     }
     render() {
-        const {altMsg,showMsg} = this.state;
+        const {altMsg,showMsg,type} = this.state;
         return (
             <Panel>
                 <Wrap>
@@ -117,11 +132,13 @@ class btnPanel extends Component {
                         <SignUp>Sign Up</SignUp>
                     </div>
                     <LoginBtn onClick={this.LoginCheck}>Login</LoginBtn>
-                </Wrap>  
-                <AlertMsg showMsg={showMsg}>
-                    <FontAwesomeIcon icon={fas.faExclamationCircle}  size="lg" className='alertAweIcon' />
-                    <span>{altMsg}</span>
-                </AlertMsg>
+                </Wrap>
+                <MessageBox showMsg={showMsg} onClick={this.cleanMsg}>
+                    <AlertMsg showMsg={showMsg}>
+                        <FontAwesomeIcon icon={type==='success'?fas.faCheckCircle:fas.faExclamationCircle}  size="lg" className='alertAweIcon' />
+                        <span>{altMsg}</span>
+                    </AlertMsg>
+                </MessageBox>
             </Panel>
         );
     }
