@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  /* border: 1px solid red; */
+  font-family: "Roboto Condensed", sans-serif;
+}
+html,
+body {
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+#root {
+  max-width: 500px;
+  min-height: 100%;
+  background: url("../images/img_town_370x170@3x.svg") no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  box-sizing: border-box;
+  position: relative;
+  margin: auto;
+  /* background: #edfbff 0% 0% no-repeat padding-box; */
+}
+
+input {
+  box-sizing: border-box;
+  padding-left: 50px;
+}
+
+.AweIcon {
+  color: #eee;
+  position: absolute;
+  top: 10px;
+  left: 10%;
+  font-size: 20px;
+}
+
+.alertAweIcon {
+  color: #fff;
+  display: block;
+  font-size: 25px;
+  flex: 0 0 30px;
+  align-items: center;
+  border-right: 1px solid #fff;
+  padding: 10px;
+  margin: 0 10px 0 0;
+}
+
+@media (min-width: 500px) {
+  .AweIcon {
+    left: 4%;
+  }
+}
