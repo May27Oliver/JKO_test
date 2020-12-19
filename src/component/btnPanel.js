@@ -5,7 +5,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 
 const Panel = styled.div`
     width:100%;
-    margin-bottom:50px;
+    margin-bottom:20px;
 `
 const Wrap = styled.div`
     width:90%;
