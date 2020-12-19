@@ -35,6 +35,9 @@ const AccountBox = styled.div`
     justify-content:center;
     flex-wrap:wrap;
     margin:0 auto 50px;
+    @media (min-width: 400px) {
+        justify-content:space-between;
+    }
 `
 
 class LoginCard extends Component {

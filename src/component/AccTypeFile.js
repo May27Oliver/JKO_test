@@ -6,12 +6,17 @@ const File = styled.div`
     border:${props=>props.selected?'2px':'1px'} solid ${props=>props.selected?'#41B8EE':'#ccc'};
     max-width: 100%;
     width:auto;
-    height:167px;
+    height:38vw;
     background-size:cover;
-    flex:0 0 167px;
+    flex:0 0 38vw;
     border-radius:10px;
     margin:10px;
     position:relative;
+    @media (min-width: 400px) {
+        width:167px;
+        flex:0 0 167px;
+        height:167px;
+    }
 `
 const SelectIcon = styled.div`
     display:${props=>props.selected?'block':'none'};
